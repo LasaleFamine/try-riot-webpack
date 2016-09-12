@@ -2,7 +2,7 @@
 
 :warning: ***Work in progress here...***  
 
-[![David](https://img.shields.io/david/dev/LasaleFamine/try-riotjs-webpack.svg)](https://github.com/LasaleFamine/try-riotjs-webpack)
+[![David](https://img.shields.io/david/dev/LasaleFamine/try-riot-webpack.svg)](https://github.com/LasaleFamine/try-riot-webpack)
 
 > Learning repo for [Riotjs](http://riotjs.com) with Webpack forking the example of Riotjs guys.  
 
@@ -40,3 +40,10 @@ becomes (using ES6):
 ```js
 this.getMessage = () => { ... }
 ```
+
+## Gotchas  
+
+I'm using:
+- [riotgear](https://github.com/LasaleFamine/rg/tree/refactor/blaze2) -> For a bunch of components ready to go (a fork of mine for support BlazeCSS 2)
+- [BlazeCSS 2](http://blazecss.com/) -> As dependency of `riotgear`
+- [riot.route()](http://riotjs.com/api/route/) -> Internal routing system of `riot`

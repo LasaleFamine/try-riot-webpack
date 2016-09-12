@@ -1,21 +1,38 @@
 <dash-app>
 
-  <dash-menu title="{ titleDash }" links={ menus }></dash-menu>
+  <dash-menu name="menu" title={ title } menus={ menus }></dash-menu>
+  <dash-page name="page" type={ typePage }></dash-page>
 
   <script>
-    require('./../units/dash-menu.tag')
-    let dashMenu;
-
     this.menus = [{
-      label: "User",
-      link: "#/user",
-      icon: "fa fa-user"
+      label: "Home",
+      link: "#/home",
+      icon: "fa fa-home"
+    }, {
+      label: "Settings",
+      link: "#/settings",
+      icon: "fa fa-settings"
+    }, {
+      label: "About",
+      link: "#/about",
+      icon: "fa fa-gear"
     }]
 
-    this.titleDash = 'New title'
+    this.title = 'New title'
 
-    this.on('mount', function () {
-      dashMenu = riot.mount("dash-menu")[0]
+    riot.route((collection, id, action) => {
+      console.log("Route NOW =>", collection)
+      switch (collection) {
+        case 'about':
+          this.typePage = 'about'
+          this.update()
+          break;
+        default:
+          this.typePage = 'home'
+          this.update()
+      }
     })
+
+
   </script>
 </dash-app>
