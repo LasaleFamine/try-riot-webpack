@@ -2,7 +2,8 @@
 
 :warning: ***Work in progress here...***  
 
-[![David](https://img.shields.io/david/dev/LasaleFamine/try-riot-webpack.svg)](https://github.com/LasaleFamine/try-riot-webpack)
+[![devDependencies](https://img.shields.io/david/LasaleFamine/try-riot-webpack.svg)](https://github.com/LasaleFamine/try-riot-webpack)
+[![dependencies](https://img.shields.io/david/dev/LasaleFamine/try-riot-webpack.svg)](https://github.com/LasaleFamine/try-riot-webpack)
 
 > Learning repo for [Riotjs](http://riotjs.com) with Webpack forking the example of Riotjs guys.  
 

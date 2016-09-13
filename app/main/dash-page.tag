@@ -1,6 +1,7 @@
 <dash-page>
   <dash-about-page name="about" if={opts.type === 'about'}></dash-about-page>
   <dash-home-page name="home" if={opts.type === 'home'}></dash-home-page>
+  <dash-settings-page name="settings" if={opts.type === 'settings'}></dash-home-page>
 
   <script>
     this.on('update', function (eventName) {

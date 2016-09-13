@@ -8,9 +8,11 @@
                       Total number of items per group
                   </h1>
               </div>
-              <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-60@large">Test 1
+              <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-60@large">
+                <rg-chart chart={ chartLine }></rg-chart>
               </div>
-              <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-40@large">Test 2
+              <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-40@large">
+                  <rg-chart chart={ chart }></rg-chart>
                   <h2 class="c-heading c-heading--medium c-highlight">
                       <i class="fa fa-trophy"></i>
                       4,239
@@ -21,42 +23,18 @@
                   <div class="o-grid o-grid--wrap">
                       <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-33@large">
                           <h3 class="c-heading c-heading--small">Next Goals</h3>
-                          <div class="c-card t-demo">
-                              <div class="c-card__content">
-                                  <p class="c-paragraph c-text--loud">Gain more items and add them to the total</p>
-                                  <p class="c-paragraph">Lorem ipsum dolor sit amet, feugiat corpora ex eam. Inciderint eloquentiam sea et.</p>
-                              </div>
-                          </div>
-                          <div class="c-card t-demo">
-                              <div class="c-card__content">
-                                  <p class="c-paragraph c-text--loud">Max out the number of items</p>
-                                  <p class="c-paragraph">Lorem ipsum dolor sit amet, feugiat corpora ex eam. Inciderint eloquentiam sea et.</p>
-                              </div>
-                          </div>
+                          <rg-tags tags={ tagsToChoose }></rg-tags>
                       </div>
                       <div class="o-grid__cell o-grid__cell--width-100 o-grid__cell--width-66@large">
                           <h3 class="c-heading c-heading--small">Notifications</h3>
-                          <div class="c-alerts a-alerts">
-                              <div class="c-alerts__alert c-alerts__alert--secondary">
-                                  <button class="c-button c-button--close">×</button>
-                                  Not all data available for
-                                  <strong class="u-text--loud">4th June 2016</strong>
-                              </div>
-                              <div class="c-alerts__alert c-alerts__alert--success">
-                                  <button class="c-button c-button--close">×</button>
-                                  New user added - (dexter@another.com)
-                              </div>
-                              <div class="c-alerts__alert c-alerts__alert--primary">
-                                  <button class="c-button c-button--close">×</button>
-                                  Goal reached on 28th May 2016!
-                              </div>
-                          </div>
+                            <rg-alerts alerts={ alerts }></rg-alerts>
                       </div>
                   </div>
               </div>
           </div>
       </main>
   </div>
+  <rg-toasts toasts={ toasts }></rg-toasts>
   <script>
       // curious about all events ?
       this.on('update', function () {
@@ -64,5 +42,105 @@
           // right after the tag is mounted on the page
           console.log("Dash HOME page opts ===>>>", opts)
       })
+
+      this.chart = {
+        type: 'doughnut', // line|bar|radar|polar|pie|doughnut
+        options: {}, // Look at Chart.js documentation on how to populate data and options
+        data: [{
+          value: 300,
+          color: "#F7464A",
+          highlight: "#FF5A5E",
+          label: "Red"
+        }, {
+          value: 50,
+          color: "#46BFBD",
+          highlight: "#5AD3D1",
+          label: "Green"
+        }, {
+          value: 100,
+          color: "#FDB45C",
+          highlight: "#FFC870",
+          label: "Yellow"
+        }]
+      }
+
+      this.chartLine = {
+  			type: 'line',
+  			data: {
+  				labels: ["January", "February", "March", "April", "May", "June", "July"],
+  				datasets: [{
+  					label: "My First dataset",
+  					fillColor: "rgba(220,220,220,0.2)",
+  					strokeColor: "rgba(220,220,220,1)",
+  					pointColor: "rgba(220,220,220,1)",
+  					pointStrokeColor: "#fff",
+  					pointHighlightFill: "#fff",
+  					pointHighlightStroke: "rgba(220,220,220,1)",
+  					data: [65, 59, 80, 81, 56, 55, 40]
+  				}, {
+  					label: "My Second dataset",
+  					fillColor: "rgba(151,187,205,0.2)",
+  					strokeColor: "rgba(151,187,205,1)",
+  					pointColor: "rgba(151,187,205,1)",
+  					pointStrokeColor: "#fff",
+  					pointHighlightFill: "#fff",
+  					pointHighlightStroke: "rgba(151,187,205,1)",
+  					data: [28, 48, 40, 19, 86, 27, 90]
+  				}]
+  			}
+		  }
+
+      this.alerts = [{
+        type: 'primary',
+        text: 'Look! Something you should know about.'
+      }, {
+        type: 'secondary',
+        text: 'Warning! You can\'t remove this alert.',
+        dismissable: false
+      }, {
+        type: 'success',
+        text: 'Success! Well done. This alert will disappear in 10 seconds',
+        timeout: 10000
+      }, {
+        type: 'error',
+        text: 'Error! Something bad happened. ',
+        dismissable: true
+      }]
+
+      this.tagsToChoose = {
+        placeholder: 'Choose a country',
+        filter: 'text', // <-- this enables filtering on the 'text' property
+        options: [{
+          text: 'England'
+        }, {
+          text: 'Scotland'
+        }, {
+          text: 'Ireland'
+        }, {
+          text: 'Wales'
+        }],
+        tags: [{
+          text: 'United States'
+        }]
+      }
+
+      this.toasts = {
+        position: 'bottomleft',
+        toasts: [{
+          type: 'primary',
+          text: 'Made you look!',
+          sticky: true // Turn off timeout
+        }, {
+          type: 'secondary',
+          text: 'Careful now...'
+        }, {
+          type: 'success',
+          text: 'You did it!'
+        }, {
+          type: 'error',
+          text: 'Oops!',
+          timeout: 4000 // Default to 6000 if not set
+        }]
+      }
   </script>
 </dash-home-page>

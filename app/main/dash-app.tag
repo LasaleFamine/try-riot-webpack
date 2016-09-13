@@ -18,13 +18,17 @@
       icon: "fa fa-gear"
     }]
 
-    this.title = 'New title'
+    this.title = 'dash-riot'
 
     riot.route((collection, id, action) => {
       console.log("Route NOW =>", collection)
       switch (collection) {
         case 'about':
           this.typePage = 'about'
+          this.update()
+          break;
+        case 'settings':
+          this.typePage = 'settings'
           this.update()
           break;
         default:
